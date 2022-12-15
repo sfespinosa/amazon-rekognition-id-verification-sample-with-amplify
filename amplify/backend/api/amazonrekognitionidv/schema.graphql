@@ -2,7 +2,7 @@ type UserInfo @model
 @key(fields: ["companyid", "userid"])
 @key(name: "userInfoByFaceId", fields: ["companyid", "faceid"], queryField: "userInfoByFaceId")
 @key(name: "userInfoByRegStatus", fields: ["companyid", "registrationstatus"], queryField: "userInfoByRegStatus")
-@auth(rules: [{ allow: private, provider: iam }]) {
+@auth(rules: [{ allow: owner, operations: [create, read, update, delete] }]) {
   companyid: String!
   userid: String!
   firstname: String!
