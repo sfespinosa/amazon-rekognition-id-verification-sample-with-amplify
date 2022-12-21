@@ -4,7 +4,7 @@ type UserInfo @model
 @key(name: "userInfoByRegStatus", fields: ["companyid", "registrationstatus"], queryField: "userInfoByRegStatus")
 @auth(rules: [
   { allow: private, provider: iam },
-  { allow: groups, groups: ["admin", "poweruser"] },
+  { allow: groups, groups: ["admin", "poweruser"], operations: [create, read, update, delete] },
   { allow: groups, groups: ["viewer"], operations: [read] },
   { allow: owner, queries: null, operations: [create, read, update, delete]}
 ]) {
