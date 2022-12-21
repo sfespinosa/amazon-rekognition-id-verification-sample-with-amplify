@@ -204,12 +204,12 @@ module.exports = {
             Message: '',
         };
 
-        const collectionId = await graphqlhelpers.getActiveCollection();
-        if(!collectionId) {
-            response.Success = false;
-            response.Message = "Unable to fetch active collection";
-            return response;
-        }
+        // const collectionId = await graphqlhelpers.getActiveCollection();
+        // if(!collectionId) {
+        //     response.Success = false;
+        //     response.Message = "Unable to fetch active collection";
+        //     return response;
+        // }
 
         const rek = new Rekognition();
         try {
