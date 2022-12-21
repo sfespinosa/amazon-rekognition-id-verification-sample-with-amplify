@@ -618,7 +618,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
-          console.log(collectionId, "loginUser - collectionId")
+            console.log(collectionId, "loginUser - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;

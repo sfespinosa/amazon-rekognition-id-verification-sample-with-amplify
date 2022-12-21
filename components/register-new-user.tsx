@@ -141,8 +141,6 @@ async function submitUser(props: RegNewUserProps, dispatch: Dispatch<RegUserActi
             }
         );
 
-        console.log(createUserResponse, 'register-new-user, create new user response')
-
         // then store image in s3 bucket
         let imageData = await fetch(props.screenshot);
         let blob = await imageData.blob();
@@ -159,13 +157,24 @@ async function submitUser(props: RegNewUserProps, dispatch: Dispatch<RegUserActi
             // call api to run through idv new user registration flow.
             // see lambda function idvworkflowfn for more details
             const variables = {userInfoAsJson: JSON.stringify(userInfo)};
-            const registerUserResponse = await callGraphQLSimpleQuery<RegisternewuserMutation>(
-                {
-                    query: registernewuser,
-                    authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
-                    variables: variables,
-                }
-            );
+
+            // WHAT IS THIS DOING?
+            // const registerUserResponse = await callGraphQLSimpleQuery<RegisternewuserMutation>(
+            //     {
+            //         query: registernewuser,
+            //         authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+            //         variables: variables,
+            //     }
+            // );
+            const registerUserResponse = await callGraphQL<RegisternewuserMutation>(
+              {
+                  query: registernewuser,
+                  authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+                  variables: {
+                    input: variables
+                  }
+              }
+          );
             console.log(registerUserResponse);
 
             if (!registerUserResponse.data?.registernewuser?.Success) {
