@@ -175,11 +175,11 @@ async function issueGQL(gqlQuery, opName, variables) {
       console.log("In request error handler");
       console.log(error);
     });
-    console.log(data, "issueGQL - data")
+
     httpRequest.write(req.body);
     httpRequest.end();
   });
-
+  console.log(data, "issueGQL - data")
   return data;
 }
 
@@ -207,9 +207,10 @@ module.exports = {
     };
 
     var data = await issueGQL(getConfigEntry, "GetConfigEntry", vars);
-    console.log(data, 'getActiveCollection - data')
+
     if (!data ||
       !data.getConfigEntry) {
+      console.log(data, 'getActiveCollection - data')
       return null;
     }
     else {
