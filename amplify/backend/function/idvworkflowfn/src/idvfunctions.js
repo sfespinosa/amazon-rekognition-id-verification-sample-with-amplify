@@ -204,6 +204,7 @@ module.exports = {
             Message: '',
         };
 
+        console.log("ARE WE HERE?")
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
             console.log(collectionId, "registerNewUser - collectionId")
@@ -212,6 +213,7 @@ module.exports = {
             return response;
         }
 
+        console.log("DID WE GET HERE?")
         const rek = new Rekognition();
         try {
             var params = {
