@@ -145,7 +145,7 @@ function getSignedRequest(appsyncUrl, gqlQuery, opName, variables) {
 async function issueGQL(gqlQuery, opName, variables) {
   const appsyncUrl = process.env.API_AMAZONREKOGNITIONIDV_GRAPHQLAPIENDPOINTOUTPUT;
   var req = getSignedRequest(appsyncUrl, gqlQuery, opName, variables);
-
+  console.log(req, 'getSignedRequest - req')
   // const userInfoResponse = await axios({
   //     method: 'post',
   //     url: appsyncUrl,
@@ -175,7 +175,7 @@ async function issueGQL(gqlQuery, opName, variables) {
       console.log("In request error handler");
       console.log(error);
     });
-
+    console.log(data, "issueGQL - data")
     httpRequest.write(req.body);
     httpRequest.end();
   });
@@ -207,7 +207,7 @@ module.exports = {
     };
 
     var data = await issueGQL(getConfigEntry, "GetConfigEntry", vars);
-
+    console.log(data, 'getActiveCollection - data')
     if (!data ||
       !data.getConfigEntry) {
       return null;
