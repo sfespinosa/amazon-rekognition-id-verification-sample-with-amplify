@@ -214,6 +214,7 @@ module.exports = {
       return null;
     }
     else {
+      console.log(data, 'getActiveCollection - data - success')
       return data.getConfigEntry.value;
     }
   },
