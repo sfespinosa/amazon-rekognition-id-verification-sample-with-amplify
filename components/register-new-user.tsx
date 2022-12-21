@@ -141,6 +141,8 @@ async function submitUser(props: RegNewUserProps, dispatch: Dispatch<RegUserActi
             }
         );
 
+        console.log(createUserResponse, 'register-new-user, create new user response')
+
         // then store image in s3 bucket
         let imageData = await fetch(props.screenshot);
         let blob = await imageData.blob();
@@ -153,7 +155,7 @@ async function submitUser(props: RegNewUserProps, dispatch: Dispatch<RegUserActi
         }) as StoragePutResponse;
 
         if (storageResponse && storageResponse.key) {
-
+          console.log(storageResponse, "after store image in s3 bucket")
             // call api to run through idv new user registration flow.
             // see lambda function idvworkflowfn for more details
             const variables = {userInfoAsJson: JSON.stringify(userInfo)};
@@ -164,7 +166,6 @@ async function submitUser(props: RegNewUserProps, dispatch: Dispatch<RegUserActi
                     variables: variables,
                 }
             );
-
             console.log(registerUserResponse);
 
             if (!registerUserResponse.data?.registernewuser?.Success) {

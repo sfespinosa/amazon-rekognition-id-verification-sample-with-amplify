@@ -206,6 +206,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
+            console.log(collectionId, "registerNewUser - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;
@@ -326,6 +327,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
+            console.log(collectionId, "registerNewUserWithIdCard - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;
@@ -472,6 +474,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
+            console.log(collectionId, "updateExistingUserPhoto - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;
@@ -547,6 +550,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
+          console.log(collectionId, "deleteUser - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;
@@ -614,6 +618,7 @@ module.exports = {
 
         const collectionId = await graphqlhelpers.getActiveCollection();
         if(!collectionId) {
+          console.log(collectionId, "loginUser - collectionId")
             response.Success = false;
             response.Message = "Unable to fetch active collection";
             return response;
